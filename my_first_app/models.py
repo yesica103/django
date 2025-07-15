@@ -21,7 +21,7 @@ class Author(models.Model):
     birth_date = models.DateField()
     
     def __str__(self):
-        return self.name
+        return self.name, self.birth_date
 
 class Profile(models.Model):
     author = models.OneToOneField(Author, on_delete=models.CASCADE)

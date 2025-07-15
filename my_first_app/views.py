@@ -1,15 +1,21 @@
 from django.shortcuts import render
-
+from my_first_app.models import Car, Author, Profile
+#from my_first_app.models import Car, Profile
 # Create your views here.
 def my_view(request):
     # This is a simple view that renders a template
-    car_list = [
-        {"title": "Toyota Camry", "year": 2020, "price": 24000},
-        {"title": "Honda Accord", "year": 2019, "price": 22000},
-        {"title": "Ford Focus", "year": 2018, "price": 18000},
-        {"title": "Chevrolet Malibu", "year": 2021, "price": 26000}
-    ]
+    car_list = Car.objects.all() 
     context = {
         "car_list": car_list
     }
     return render(request, "my_first_app/car_list.html", context)
+
+def author_profile_view(request, *args, **kwargs):
+    # This is a simple view that renders a template
+    author = Author.objects.get(id=kwargs['id'])
+    
+    context = {
+        "author_profile": author
+    }
+    return render(request, "my_first_app/author_profile.html", context)
+
