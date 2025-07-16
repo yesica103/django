@@ -16,19 +16,15 @@ Including another URLconf
 """
 from django.http import HttpResponse
 from django.urls import path
-from my_first_app.views import author_profile_view
+from my_first_app.views import author_profile_view, my_view, my_test_view, CarListView
 
-
-def my_view(request, *args, **kwargs):
-    print(args)
-    print(kwargs)
-    return HttpResponse("")
 
 
 urlpatterns = [
-    path("listado/", my_view),
-    path("detalle/<int:id>", my_view),
-    path("marcas/<str:brand>", my_view),
+    #path("listado/", my_view),
+    path("listado/", CarListView.as_view()),
+    path("detalle/<int:id>", my_test_view),
+    path("marcas/<str:brand>", my_test_view),
     path("author-profile/<int:id>", author_profile_view),
 
 ]

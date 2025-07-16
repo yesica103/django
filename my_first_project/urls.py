@@ -21,7 +21,7 @@ from my_first_app.views import my_view, author_profile_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('car_list/', my_view),
-    #path('carros/', include('my_first_app.urls')),
+    path('carros/', include('my_first_app.urls')),
     path('autores/', include('my_first_app.urls'))
 
 ]
